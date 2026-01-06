@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pendaftaran Santri | Pondok Pesantren</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box;font-family:'Poppins',sans-serif}
+
+body{
+  margin:0;
+  min-height:100vh;
+  background:url('https://images.unsplash.com/photo-1503264116251-35a269479413');
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
+
+/* CARD TRANSPARAN */
+.form-box{
+  width:100%;
+  max-width:780px;
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:24px;
+  padding:30px;
+  color:#fff;
+  box-shadow:0 30px 60px rgba(0,0,0,.45);
+  animation:fadeUp 1s ease;
+}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(40px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+h2{text-align:center;margin-bottom:5px}
+p{text-align:center;font-size:14px;opacity:.85;margin-bottom:25px}
+
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
+}
+
+@media(max-width:768px){
+  .grid{grid-template-columns:1fr}
+}
+
+label{font-size:13px}
+input,select,textarea{
+  width:100%;
+  padding:12px;
+  margin-top:6px;
+  margin-bottom:14px;
+  border:none;
+  border-radius:12px;
+  outline:none;
+}
+
+input[type=file]{background:#fff;font-size:13px}
+
+/* BUTTON */
+button{
+  width:100%;
+  padding:15px;
+  border:none;
+  border-radius:16px;
+  background:linear-gradient(135deg,#00e676,#00c853);
+  color:#fff;
+  font-size:16px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+button:hover{
+  transform:scale(1.04);
+  box-shadow:0 15px 35px rgba(0,230,118,.45);
+}
+
+/* NOTIF */
+.notif{
+  position:fixed;
+  top:20px;
+  right:20px;
+  padding:16px 22px;
+  border-radius:14px;
+  color:#fff;
+  box-shadow:0 15px 35px rgba(0,0,0,.4);
+  animation:slideNotif .5s ease;
+  z-index:9999;
+}
+.success{background:linear-gradient(135deg,#00e676,#00c853)}
+.error{background:linear-gradient(135deg,#ff5252,#ff1744)}
+
+@keyframes slideNotif{
+  from{opacity:0;transform:translateY(-20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.footer{
+  text-align:center;
+  font-size:12px;
+  opacity:.7;
+  margin-top:18px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="form-box">
+<h2>Pendaftaran Santri Baru</h2>
+<p>Pondok Pesantren Hidayatul Mubtadi'in</p>
+
+<form id="formDaftar">
+
+<div class="grid">
+  <div>
+    <label>Nama Lengkap Santri</label>
+    <input type="text" name="nama" required>
+  </div>
+  <div>
+    <label>NIK Santri</label>
+    <input type="number" name="nik" required>
+  </div>
+</div>
+
+<div class="grid">
+  <div>
+    <label>Tempat Lahir</label>
+    <input type="text" name="tempat_lahir" required>
+  </div>
+  <div>
+    <label>Tanggal Lahir</label>
+    <input type="date" name="tgl_lahir" required>
+  </div>
+</div>
+
+<label>Jenis Kelamin</label>
+<select name="jk" required>
+  <option value="">-- Pilih --</option>
+  <option>Laki-laki</option>
+  <option>Perempuan</option>
+</select>
+
+<label>Alamat Lengkap</label>
+<textarea name="alamat" rows="3" required></textarea>
+
+<div class="grid">
+  <div>
+    <label>Nama Orang Tua / Wali</label>
+    <input type="text" name="wali" required>
+  </div>
+  <div>
+    <label>Pekerjaan Orang Tua</label>
+    <input type="text" name="pekerjaan" required>
+  </div>
+</div>
+
+<div class="grid">
+  <div>
+    <label>No WhatsApp Orang Tua</label>
+    <input type="number" name="wa" required>
+  </div>
+  <div>
+    <label>Jenjang Pendidikan</label>
+    <select name="jenjang" required>
+      <option>MI / SD</option>
+      <option>MTs / SMP</option>
+      <option>MA / SMA</option>
+    </select>
+  </div>
+</div>
+
+<hr style="opacity:.3">
+
+<label>Upload Foto Santri</label>
+<input type="file" name="foto" accept="image/*" required>
+
+<label>Upload Kartu Keluarga (KK)</label>
+<input type="file" name="kk" accept="image/*,application/pdf" required>
+
+<label>Upload Akte Kelahiran</label>
+<input type="file" name="akte" accept="image/*,application/pdf" required>
+
+<label>Upload Ijazah (Opsional)</label>
+<input type="file" name="ijazah" accept="image/*,application/pdf">
+
+<button type="submit">
+<i class="fa-solid fa-paper-plane"></i> Kirim Pendaftaran
+</button>
+
+</form>
+
+<div class="footer">
+© 2026 Pondok Pesantren Hidayatul Mubtadi'in
+</div>
+</div>
+
+<script>
+const scriptURL = "https://script.google.com/macros/s/AKfycbwe7eAgdzleTqqCOcevjLVEm38uLx4aVKZq1fzPhXFBQB2NPJt4VZiNabXECOg6v-s/exec";
+
+function notif(pesan,tipe){
+  const n=document.createElement("div");
+  n.className="notif "+tipe;
+  n.innerHTML=pesan;
+  document.body.appendChild(n);
+  setTimeout(()=>n.remove(),3500);
+}
+
+document.getElementById("formDaftar").addEventListener("submit",function(e){
+  e.preventDefault();
+  const btn=this.querySelector("button");
+  btn.innerHTML="Mengirim...";
+  btn.disabled=true;
+
+  fetch(scriptURL,{method:"POST",body:new FormData(this)})
+  .then(r=>r.text())
+  .then(r=>{
+    if(r=="DUPLIKAT"){
+      notif("❌ Nomor WhatsApp sudah terdaftar","error");
+    }else{
+      notif("✅ Pendaftaran berhasil","success");
+      this.reset();
+    }
+    btn.innerHTML="Kirim Pendaftaran";
+    btn.disabled=false;
+  })
+  .catch(()=>{
+    notif("❌ Server tidak terhubung","error");
+    btn.innerHTML="Kirim Pendaftaran";
+    btn.disabled=false;
+  });
+});
+</script>
+
+</body>
+</html>
